@@ -1,0 +1,8 @@
+{
+    "id": "fill_cauldron",
+    "unit": "int",
+    "reader": {
+        "$type": "int",
+        "path": ["minecraft:custom","minecraft:fill_cauldron"]
+    }
+}

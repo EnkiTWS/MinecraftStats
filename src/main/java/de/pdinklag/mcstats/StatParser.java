@@ -11,7 +11,7 @@ public class StatParser {
     private static IntReader parseIntReader(JSONObject obj) throws JSONException {
         JSONArray jsonPath = obj.getJSONArray("path");
         String[] path = new String[jsonPath.length()];
-        for(int i = 0; i < path.length; i++) {
+        for (int i = 0; i < path.length; i++) {
             path[i] = jsonPath.getString(i);
         }
         return new IntReader(path);
@@ -20,7 +20,7 @@ public class StatParser {
     private static SumReader parseSumReader(JSONObject obj) throws JSONException {
         JSONArray jsonReaders = obj.getJSONArray("readers");
         DataReader[] readers = new DataReader[jsonReaders.length()];
-        for(int i = 0; i < readers.length; i++) {
+        for (int i = 0; i < readers.length; i++) {
             readers[i] = parseReader(jsonReaders.getJSONObject(i));
         }
         return new SumReader(readers);
@@ -29,30 +29,48 @@ public class StatParser {
     private static MatchSumReader parseMatchSumReader(JSONObject obj) throws JSONException {
         JSONArray jsonPath = obj.getJSONArray("path");
         String[] path = new String[jsonPath.length()];
-        for(int i = 0; i < path.length; i++) {
+        for (int i = 0; i < path.length; i++) {
             path[i] = jsonPath.getString(i);
         }
 
         JSONArray jsonPatterns = obj.getJSONArray("patterns");
         String[] patterns = new String[jsonPatterns.length()];
-        for(int i = 0; i < patterns.length; i++) {
+        for (int i = 0; i < patterns.length; i++) {
             patterns[i] = jsonPatterns.getString(i);
         }
+
         return new MatchSumReader(path, patterns);
     }
 
     private static SetCountReader parseSetCountReader(JSONObject obj) throws JSONException {
         JSONArray jsonPath = obj.getJSONArray("path");
         String[] path = new String[jsonPath.length()];
-        for(int i = 0; i < path.length; i++) {
+        for (int i = 0; i < path.length; i++) {
             path[i] = jsonPath.getString(i);
         }
+
         return new SetCountReader(path);
+    }
+
+    private static AdvancementTreeCountReader parseAdvancementTreeCountReader(JSONObject obj) throws JSONException {
+        JSONArray jsonPath = obj.getJSONArray("path");
+        String[] path = new String[jsonPath.length()];
+        for (int i = 0; i < path.length; i++) {
+            path[i] = jsonPath.getString(i);
+        }
+
+        JSONArray jsonPatterns = obj.getJSONArray("patterns");
+        String[] patterns = new String[jsonPatterns.length()];
+        for (int i = 0; i < patterns.length; i++) {
+            patterns[i] = jsonPatterns.getString(i);
+        }
+
+        return new AdvancementTreeCountReader(path, patterns);
     }
 
     private static DataReader parseReader(JSONObject obj) throws JSONException, StatParseException {
         String type = obj.getString("$type");
-        switch(type) {
+        switch (type) {
             case "int":
                 return parseIntReader(obj);
             case "sum":
@@ -61,6 +79,8 @@ public class StatParser {
                 return parseMatchSumReader(obj);
             case "set-count":
                 return parseSetCountReader(obj);
+            case "advancement-tree-count":
+                return parseAdvancementTreeCountReader(obj);
             default:
                 throw new StatParseException("unsupported reader type: " + type);
         }
@@ -68,6 +88,7 @@ public class StatParser {
 
     /**
      * Parses a JSON object into a stat definiton.
+     *
      * @param obj the JSON object to parse
      * @return the resulting stat
      * @throws StatParseException in case an error occurs trying to parse the object
@@ -80,8 +101,9 @@ public class StatParser {
             final int maxVersion = obj.optInt("maxVersion", Integer.MAX_VALUE);
             final DataReader reader = parseReader(obj.getJSONObject("reader"));
             final DataAggregator aggregator = reader.createDefaultAggregator();
-            return new Stat(id ,unit, minVersion, maxVersion, reader, aggregator);
-        } catch(JSONException e) {
+
+            return new Stat(id, unit, minVersion, maxVersion, reader, aggregator);
+        } catch (JSONException e) {
             throw new StatParseException(e);
         }
     }

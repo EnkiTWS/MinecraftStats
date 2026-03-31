@@ -1,0 +1,11 @@
+{
+    "id": "used_end_crystal",
+    "unit": "int",
+    "reader": {
+        "$type": "int",
+        "path": [
+            "minecraft:used",
+            "minecraft:end_crystal"
+        ]
+    }
+}

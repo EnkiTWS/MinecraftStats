@@ -1,0 +1,8 @@
+{
+    "id": "trigger_trapped_chest",
+    "unit": "int",
+    "reader": {
+        "$type": "int",
+        "path": ["minecraft:custom","minecraft:trigger_trapped_chest"]
+    }
+}

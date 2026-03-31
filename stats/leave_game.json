@@ -1,0 +1,8 @@
+{
+    "id": "leave_game",
+    "unit": "int",
+    "reader": {
+        "$type": "int",
+        "path": ["minecraft:custom","minecraft:leave_game"]
+    }
+}

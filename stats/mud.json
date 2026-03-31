@@ -1,0 +1,12 @@
+{
+    "id": "mud",
+    "unit": "int",
+    "reader": {
+        "$type": "match-sum",
+        "path": ["minecraft:mined"],
+        "patterns": [
+            "minecraft:mud"
+            
+        ]
+    }
+}

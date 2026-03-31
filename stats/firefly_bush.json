@@ -1,0 +1,11 @@
+{
+    "id": "firefly_bush",
+    "unit": "int",
+    "reader": {
+        "$type": "match-sum",
+        "path": ["minecraft:used"],
+        "patterns": [
+            "minecraft:.*firefly_bush"
+        ]
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "id": "mine_resin_clump",
+    "unit": "int",
+    "reader": {
+        "$type": "int",
+        "path": ["minecraft:mined","minecraft:resin_clump"]
+    }
+}

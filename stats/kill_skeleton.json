@@ -6,7 +6,9 @@
         "path": ["minecraft:killed"],
         "patterns": [
             "minecraft:skeleton",
-            "minecraft:stray"
+            "minecraft:stray",
+			"minecrafrt:bogged",
+			"minecraft:parched"
         ]
     }
 }

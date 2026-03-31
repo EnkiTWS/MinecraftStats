@@ -8,7 +8,9 @@
             "minecraft:drowned",
             "minecraft:husk",
             "minecraft:zombie",
-            "minecraft:zombie_villager"
+            "minecraft:zombie_villager",
+			"minecraft:zombie_nautilus",
+			"minecraft:zombie_horse"
         ]
     }
 }

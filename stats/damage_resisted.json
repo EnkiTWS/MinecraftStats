@@ -1,0 +1,8 @@
+{
+    "id": "damage_resisted",
+    "unit": "int",
+    "reader": {
+        "$type": "int",
+        "path": ["minecraft:custom","minecraft:damage_resisted"]
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "id": "craft_soul_campfire",
+    "unit": "int",
+    "reader": {
+        "$type": "int",
+        "path": ["minecraft:crafted","minecraft:soul_campfire"]
+    }
+}

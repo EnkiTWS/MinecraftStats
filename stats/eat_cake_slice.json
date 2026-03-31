@@ -1,0 +1,8 @@
+{
+    "id": "eat_cake_slice",
+    "unit": "int",
+    "reader": {
+        "$type": "int",
+        "path": ["minecraft:custom","minecraft:eat_cake_slice"]
+    }
+}

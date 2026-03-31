@@ -1,0 +1,14 @@
+{
+    "id": "killed_by_llama",
+    "unit": "int",
+    "reader": {
+        "$type": "match-sum",
+        "path": [
+            "minecraft:killed_by"
+        ],
+        "patterns": [
+            "minecraft:llama",
+            "minecraft:trader_llama"
+        ]
+    }
+}

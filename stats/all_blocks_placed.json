@@ -1,0 +1,13 @@
+{
+    "id": "all_blocks_placed",
+    "unit": "int",
+    "reader": {
+        "$type": "match-sum",
+        "path": [
+            "minecraft:used"
+        ],
+        "patterns": [
+            "minecraft:(.+_(block|planks|log|wood|stairs|slab|wall|fence|gate|door|trapdoor|plate|button|bed|carpet|wool|terracotta|concrete|glass|pane|ore)|(stone|dirt|sand|gravel|cobblestone|obsidian|netherrack|end_stone|torch|lantern|chest|furnace|crafting_table|anvil|piston|tnt|hay|leaves|dripstone|amethyst|sculk|shulker_box))"
+        ]
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "id": "break_golden_tools",
+    "unit": "int",
+    "reader": {
+        "$type": "match-sum",
+        "path": ["minecraft:broken"],
+        "patterns": [
+            "minecraft:golden_axe",
+            "minecraft:golden_hoe",
+            "minecraft:golden_pickaxe",
+            "minecraft:golden_shovel"
+            
+        ]
+    }
+}

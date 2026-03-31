@@ -1,0 +1,14 @@
+{
+    "id": "used_all_boats",
+    "unit": "int",
+    "reader": {
+        "$type": "match-sum",
+        "path": [
+            "minecraft:used"
+        ],
+        "patterns": [
+            "minecraft:.+_boat",
+            "minecraft:.+_raft"
+        ]
+    }
+}

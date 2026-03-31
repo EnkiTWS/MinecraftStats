@@ -1,0 +1,13 @@
+{
+    "id": "used_all_slabs",
+    "unit": "int",
+    "reader": {
+        "$type": "match-sum",
+        "path": [
+            "minecraft:used"
+        ],
+        "patterns": [
+            "minecraft:.+_slab"
+        ]
+    }
+}

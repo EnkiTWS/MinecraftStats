@@ -1,0 +1,8 @@
+{
+    "id": "gossip",
+    "unit": "int",
+    "reader": {
+        "$type": "int",
+        "path": ["minecraft:custom","minecraft:talked_to_villager"]
+    }
+}

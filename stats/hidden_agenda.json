@@ -1,0 +1,9 @@
+{
+    "id": "hidden_agenda",
+  "unit": "int",
+  "reader": {
+    "$type": "advancement-tree-count",
+    "path": ["advancements"],
+    "patterns": ["minecraft:adventure/.*"]
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "id": "ride_nautilus",
+    "unit": "cm",
+    "reader": {
+        "$type": "int",
+        "path": [
+            "minecraft:custom",
+            "minecraft:nautilus_one_cm"
+        ]
+    }
+}

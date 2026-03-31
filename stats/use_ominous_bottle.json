@@ -1,0 +1,8 @@
+{
+    "id": "use_ominous_bottle",
+    "unit": "int",
+    "reader": {
+        "$type": "int",
+        "path": ["minecraft:used","minecraft:ominous_bottle"]
+    }
+}

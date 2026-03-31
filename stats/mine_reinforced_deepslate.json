@@ -1,0 +1,8 @@
+{
+    "id": "mine_reinforced_deepslate",
+    "unit": "int",
+    "reader": {
+        "$type": "int",
+        "path": ["minecraft:mined","minecraft:reinforced_deepslate"]
+    }
+}
