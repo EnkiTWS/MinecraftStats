@@ -216,9 +216,9 @@ As an example, consider a Halloween-themed event called "Skeleton Hunt" that tra
 
 ## Custom Awards
 
-The awards are defined in the `stats` directoy in a JSON file each. You can create additional awards simply by adding another JSON file. By convention, the name of the JSON file should match the ID of the award.
+The awards are defined in the `stats` directory in a JSON file each. You can create additional awards simply by adding another JSON file. By convention, the name of the JSON file should match the ID of the award.
 
-A JSON object defining an award consists of the following felds:
+A JSON object defining an award consists of the following fields:
 
 * **``id`` **: The *unique* ID of the award. This is also the ID that you will later find in the URL in the web frontend. It must be a valid name for a file as well as a portion of a URL, so avoid special characters as well as spaces.
 * **`unit`**: The unit in which award scores are measured. The following units commonly occur in Minecraft and are recognized:
@@ -236,12 +236,50 @@ As a hint, if you wish to create a custom award, it is a good idea to find an al
 Readers define how an award score is determined from a player's statistics JSON. There are different types of readers that can be selected using the **`$type`** field. The other fields that are available depend on the selected type. The following is a listing of the available reader types, each with an example award (ID) for reference.
 
 * **`int`**: Reads a single integer from the nested object given by the `path` array. The final entry in `path` is the name of the field to read. Example: `jump`.
-* **`match-sum`**: Reads multiple integers from the nested bject given by `path`. The fields that are read are given in the `patterns` array, which may contain [regular expressions](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html). Example: `break_tools`.
+* **`match-sum`**: Reads multiple integers from the nested object given by `path`. The fields that are read are given in the `patterns` array, which may contain [regular expressions](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html). Example: `break_tools`.
 * **`set-count`**: Counts the number of distinct entries in the nested object or array given by `path`. Example: `biomes`.
+* **`advancement-tree-count`**: Counts completed advancements in a nested advancement object given by `path`, filtered by the regular expressions in the `patterns` array. Only matched advancements with `"done": true` are counted. This is useful for counting an entire advancement tab/tree such as `minecraft:story/*` or `minecraft:adventure/*`.
 
 #### Advancements
 
-*MinecraftStats* also loads players' advancements. These can be accessed by stating `advancements` as the first node. An example can be found in the `biomes` award, which counts the number of different biomes a player has visited.
+*MinecraftStats* also loads players' advancements. These can be accessed by stating `advancements` as the first node.
+
+There are two common ways to use advancement data:
+
+* Use **`set-count`** on the `criteria` object of a single advancement to count partial progress.  
+  Example: the `biomes` award counts the number of discovered biomes for `minecraft:adventure/adventuring_time`.
+
+```json
+{
+    "id": "biomes",
+    "unit": "int",
+    "reader": {
+        "$type": "set-count",
+        "path": ["advancements", "minecraft:adventure/adventuring_time", "criteria"]
+    }
+}
+* Use **'advancement-tree-count'** to count total number of completed advancements.  This does not includ advancements that are only paritialy complete. 
+ Exanple: Looking at total number of Advancements completed in the Adventure tab. 
+
+```json
+ {
+    "id": "advancements_adventure",
+    "unit": "int",
+    "reader": {
+        "$type": "advancement-tree-count",
+        "path": ["advancements"],
+        "patterns": ["minecraft:adventure/.*"]
+    }
+}
+
+It works with all current Vanilla tabs. It is not tested with modded although it could hypotheatically work. 
+
+minecraft:story/.*
+minecraft:nether/.*
+minecraft:adventure/.*
+minecraft:end/.*
+minecraft:husbandry/.*
+
 
 ### Icon
 

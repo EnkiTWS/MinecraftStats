@@ -7,8 +7,8 @@
         "patterns": [
             "minecraft:skeleton",
             "minecraft:stray",
-			"minecrafrt:bogged",
-			"minecraft:parched"
+			"minecraft:bogged",
+			"Minecraft:parched"
         ]
     }
 }

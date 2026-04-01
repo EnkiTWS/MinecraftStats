@@ -1,0 +1,13 @@
+{
+    "id": "craft_all_spears",
+    "unit": "int",
+    "reader": {
+        "$type": "match-sum",
+        "path": [
+            "minecraft:crafted"
+        ],
+        "patterns": [
+            "minecraft:.+_spear"
+        ]
+    }
+}
