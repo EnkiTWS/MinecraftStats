@@ -5,7 +5,7 @@
         "$type": "match-sum",
         "path": ["minecraft:crafted"],
         "patterns": [
-            "minecraft:craft_conduit"
+            "minecraft:conduit"
         ]
     }
 }
